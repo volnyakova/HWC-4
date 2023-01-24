@@ -56,13 +56,13 @@ int[] GetArray (int size)
 
 
 
-
+/*
 
 //домашняя работа  5
 
 //задайте массив заполненный случайными полопжительными трехзначными числами.
 //напишите программу,которая покажет количество четных чисел в массиве.
-/*
+
 int[] Array = GetArray(10, 100, 1000);
 Console.WriteLine($"[{String.Join(", ",Array)}]");
 int sum = 0;
@@ -81,7 +81,7 @@ int[] GetArray (int size, int minValue, int maxValue){
     }
     return res;
 }
-*/
+
 //задайте одномерный массив,заполненный случайными числами. Найдите сумму элементов,стоящих на нечетных индексах.
 int[] GetArray1 (int size)
 {
@@ -93,7 +93,7 @@ int[] GetArray1 (int size)
 return Arr;
 }
 
-/*
+
 int[] Array1 = GetArray1 (15);
 Console.WriteLine($"[{String.Join(", ",Array1)}]");
 int result = 0;
@@ -107,7 +107,7 @@ for(int i = 0; i < Array1.Length; i++)
 
 
 Console.WriteLine(result);
-*/
+
 
 //Найдите произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент,второй  и предпоследний и т.д. Результат запишите в новый массив.
 int[] Array2 = GetArray1(5);
@@ -129,4 +129,64 @@ for(int i = 0;  i < size;  i++)
     }
     
 Console.WriteLine($"[{String.Join(", ",NewArray2)}]");
+*/
+
+
+
+
+
+// ДОМАШНЯЯ РАБОТА 6
+
+/*
+// Пользователь вводит с клавиатуры М чисел.
+// Посчитайте,сколько чисел строго больше 0 ввел пользователь.
+Console.WriteLine("Введите числа через пробел: ");
+string M = (Console.ReadLine()!);
+string[] N = M.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries );
+foreach(string el in N)
+{
+    Console.Write($"[{String.Join(",",(el))}]");
+}
+int sum = 0;
+
+for(int i = 0; i <= N.Length - 1; i++)
+{
+    if(Convert.ToInt32(Convert.ToString(N[i])) > 0) sum = sum+1;
+    
+}
+Console.WriteLine();
+Console.WriteLine($"Цифр больше 0 : {sum}");
+
+*/
+
+// Написать программу,которая на вход принимает массив из любого колличества
+// элементо(не менее 6) в промежутке от 0 до 100,а на выходе выводит этот же
+//массив, но отсортированный по возрастанию(от меньшего числа к большему)
+int[] array4 = GetArray4(6, 0, 100);
+Console.WriteLine($"[{String.Join(",",array4)}]");
+int[] newArray4 = GetReversArray(array4);
+Console.WriteLine($"[{String.Join(",",newArray4)}]");
   
+    
+//-----------Метод--------------
+int[] GetArray4 (int size, int minValue, int maxValue){
+    int[] res = new int[size];
+    for(int i = 0; i < size; i++){
+        res[i] = new Random().Next(minValue, maxValue + 1);
+    }
+    return res;
+}
+//----------Метод---------------
+int[] GetReversArray (int[] array)
+{
+    
+    for(int i = 0; i < array.Length/2; i++)
+    {
+     
+    int k = array[i];
+    array[i] = array[array.Length - i - 1];
+    array[array.Length - i - 1] = k;
+        
+    }
+    return array;
+}
