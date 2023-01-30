@@ -360,26 +360,6 @@ int n1 = 5;
 int[,] array2 = GetArray1(m1, n1, 0, 100 );
 GetArrayNew(array2);
          
-    
-
-/*
-int[,] GetArray1(int m, int n, int minValue, int maxValue)
-{
-    int[,] result = new int[m,n];
-    for(int i = 0; i < m; i++)
-    {
-        for(int j = 0; j <n; j++)
-        {
-            result[i,j] = new Random().Next(minValue, maxValue + 1);
-            Console.Write($"{result[i, j]}  ");
-           
-        }
-        Console.WriteLine();
-    }
-    
-    return result;
-}
-*/
 
 void GetArrayNew(int[,] array)
 {  
