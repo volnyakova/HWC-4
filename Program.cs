@@ -257,7 +257,7 @@ for(int i = 0; i < size; i++)
     
         return res;
 }
-*/
+
 
 
 
@@ -377,5 +377,178 @@ void GetArrayNew(int[,] array)
     }
 }
 
+*/
+
+
+// -------------Домашняя работа 8----------------
+
+// Задайте двумерный массив. Напишите программу, которая
+// упорядочит по убыванию элемент каждой строки 
+// двумерного массива.
+
+int m = 5;
+int n = 5;
+int[,] array2 = GetArray1(m, n, 0, 100 );
+
+for(int i = 0; i < array2.GetLength(0); i++)
+{
+    for(int j = 0; j < array2.GetLength(1)-1; j++)
+    {
+        for(int k = 0;k < array2.GetLength(1)-1; k++)
+        {
+            if(array2[i,k] <= array2[i,k+1])
+            {
+                int temp = 0;
+                temp = array2[i,k];
+                array2[i,k] = array2[i,k+1];
+                array2[i,k+1] = temp;
+             }
+        }
+
+    }
+}
+    
+Console.WriteLine();
+PrintArray(array2);
+Console.WriteLine();
+
+int[,] GetArray1(int m, int n, int minValue, int maxValue)
+{
+    int[,] result = new int[m,n];
+    for(int i = 0; i < m; i++)
+    {
+        for(int j = 0; j <n; j++)
+        {
+            result[i,j] = new Random().Next(minValue, maxValue + 1);
+            Console.Write($"{result[i, j]}  ");
+        }
+        Console.WriteLine();
+    }
+    
+    return result;
+}
+    
+
+void PrintArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i, j] + " ");
+        }
+        Console.WriteLine("");
+    }
+}
+
+
+
+// Задайте прямоугольный массив. Напишите программу,которая
+// будет находить строку с наименьшей суммой элементов.
+
+int m1 = 5;
+int n1 = 3;
+int[,] array3 = GetArray1(m1, n1, 0, 100 );
+int minSum = Int32.MaxValue;
+int Line = 0;
+Console.WriteLine();
+for(int i = 0; i < array3.GetLength(0); i++)
+{
+    int sum = 0;
+    for(int j = 0; j < array3.GetLength(1); j++)
+    {
+        sum = sum + array3[i,j];
+    }
+    if(sum < minSum)
+    {
+        minSum = sum;
+        Line++;
+    }
+
+}
+Console.WriteLine("строка " + (Line) + ", с наименьшей суммой элементов : " + (minSum));
+Console.WriteLine();
+
+// Задайте две матрицы. Напишите программу, 
+// которая будет находить прозведения двух матриц.
+
+Console.WriteLine(" Матрица 1 ");
+int[,] matrix1 = GetArray1(m, n, 0, 10 );
+
+Console.WriteLine(" Матрица 2 ");
+int[,] matrix2 = GetArray1(m, n, 0, 10 );
+
+int[,] matrix3 = new int[matrix1.GetLength(0),matrix1.GetLength(1)];
+
+
+for(int i = 0; i < matrix1.GetLength(0); i++)
+{
+    for(int j = 0; j < matrix1.GetLength(1)-1; j++)
+    {
+        for(int k = 0;k < matrix1.GetLength(1)-1; k++)
+        {
+            matrix3[i,j] = matrix3[i,j] + (matrix1[i,k] * matrix2[k,j]);
+        }
+
+    }
+}
+
+Console.WriteLine("Произведение матриц 1*2");
+PrintArray(matrix3);
+Console.WriteLine();
+
+// Сформируйте трехмерный массив из неповторяющихся двузначных чисел.
+// Напишите программу, которая будет построчно выводить массив,
+// добавляя индексы каждого элемента.
+
+int M = 2;
+int N = 2;
+int K = 2;
+int dimension = 89;
+
+int[,,] array4 = Get3dMassive(M, N, K);
+
+for (int i = 0; i < array4.GetLength(0); i++)
+{
+    for (int j = 0; j < array4.GetLength(1); j++)
+    {
+        for (int k = 0; k < array4.GetLength(2); k++)
+        {
+            Console.Write($" {array4[i, j, k]} ({i} ,{j},{k}) ");
+        }
+        Console.WriteLine();
         
+    }
+    
+}
+
+int[,,] Get3dMassive(int size1, int size2, int size3)
+{
+    int[,,] array = new int[size1, size2, size3];
+    int[] values = new int[dimension];
+    int num = 10;
+    for (int i = 0; i < values.Length; i++)
+        values[i] = num++;
+
+    for (int i = 0; i < values.Length; i++)
+    {
+        int randomInd = new Random().Next(0, values.Length);
+        
+    }
+ int valueIndex = 0;
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            for (int k = 0; k < array.GetLength(2); k++)
+            {
+                array[i, j, k] = values[valueIndex++];
+            }
+        }
+    }
+    return array;
+}
+
+
     
